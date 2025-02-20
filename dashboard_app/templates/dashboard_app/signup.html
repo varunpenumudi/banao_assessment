@@ -1,0 +1,64 @@
+{% extends 'dashboard_app/layout.html' %}
+
+{% block title %} Sign Up {% endblock %}
+
+{% block body %}
+
+<div class="mx-auto w-50 border rounded p-5">
+    <h1 class="text-3xl mb-5"> Sign Up </h1>
+
+    {% if message %}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+    {% endif %}
+
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <input type="text" id="firstname" placeholder="First name" name="firstname" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <input type="text" id="lastname" placeholder="Last name" name="lastname" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <input type="text" id="username" placeholder="username" name="username" class="form-control" required>
+        </div>
+
+        <div class="mt-1 mb-3">
+            <label for="profilepic" class="form-label"> Profile Picture </label>
+            <input type="file" id="profilepic" placeholder="Profile Picture" name="profilepic" class="form-control" >
+        </div>
+
+        <div class="mb-3">
+            <input type="text" id="email" placeholder="Email" name="email" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <input type="password" id="password" placeholder="password" name="password" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <input type="password" id="confirm_password" placeholder="confirm password" name="confirm_password" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <input type="text" id="address" placeholder="Address" name="address" class="form-control">
+        </div>
+
+        <div class="mt-1 mb-3">
+            <label for="role" class="form-label"> Are You a Doctor/Patient? </label>
+            <select class="form-select" name="role" id="role" required>
+                <option value="PATIENT"> Patient </option>
+                <option value="DOCTOR"> Doctor </option>
+            </select>
+        </div>
+
+        <button class="btn btn-primary"> Submit </button>
+    </form>
+</div>
+      
+{% endblock %}

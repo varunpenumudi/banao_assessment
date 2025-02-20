@@ -1,0 +1,37 @@
+{% extends 'dashboard_app/layout.html' %}
+
+{% block title %} Login {% endblock %}
+
+{% block body %}
+
+<div class="mx-auto w-50 border rounded p-5">
+    <h1 class="text-3xl mb-5"> Login </h1>
+
+    {% if message %}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+    {% endif %}
+
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label for="username" class="form-label"> Username </label>
+            <input type="text" id="username" placeholder="username" name="username" class="form-control" >
+        </div>
+
+        <div class="mb-3">
+            <label for="password" class="form-label"> Password </label>
+            <input type="password" id="password" placeholder="password" name="password" class="form-control" >
+        </div>
+
+        <button class="btn btn-primary"> Submit </button>
+    </form>
+
+    <div class="text-center mt-2">
+        <strong> Not a user yet, <a href="{% url 'signup' %}"> Create Account </a> </strong>
+    </div>
+</div>
+      
+{% endblock %}
