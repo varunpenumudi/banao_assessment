@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import dj_database_url
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -26,7 +27,7 @@ SECRET_KEY = 'django-insecure-$e7*&-7o51gifaxyfnb7o(_k3iq*bmmt@kthc%*7+msntn@)al
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['banao-assessment.onrender.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'banao-assessment.onrender.com']
 
 
 # Application definition
@@ -77,10 +78,9 @@ WSGI_APPLICATION = 'task1_login_dashboard.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.parse(
+        url="postgresql://dashboardapp_db_46f3_user:nl8Bd8oz8jDWbxQ2p6r9VPnDJlMUV45Z@dpg-curg91pu0jms73btnk80-a.oregon-postgres.render.com/dashboardapp_db_46f3",
+    )
 }
 
 
